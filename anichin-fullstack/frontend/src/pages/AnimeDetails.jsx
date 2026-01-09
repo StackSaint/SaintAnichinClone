@@ -4,7 +4,7 @@ import axios from 'axios';
 import { PlayCircle, Bookmark, Calendar, Star, Info, AlertTriangle, Sword } from 'lucide-react'; // Added Sword
 import { AuthContext } from '../App';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://saint-immortal.vercel.app';
 
 export default function AnimeDetails() {
   const { slug } = useParams();

@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { PlayCircle, Search as SearchIcon, Sword } from 'lucide-react'; // Added Sword
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://saint-immortal.vercel.app';
 
 export default function SearchPage() {
   const { query } = useParams();

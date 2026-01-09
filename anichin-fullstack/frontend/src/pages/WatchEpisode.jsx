@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight, List, AlertCircle, Play, Shield, ShieldAlert, RefreshCw, Sword } from 'lucide-react'; // Added Sword
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://saint-immortal.vercel.app';
 
 export default function WatchEpisode() {
   const { slug } = useParams();

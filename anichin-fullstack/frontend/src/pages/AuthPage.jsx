@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
 import { User, Lock, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://saint-immortal.vercel.app';
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Register

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Trash2, PlayCircle, AlertCircle, Sword } from 'lucide-react'; // Added Sword
 import { AuthContext } from '../App';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://saint-immortal.vercel.app';
 
 export default function Bookmarks() {
   const { token } = useContext(AuthContext);
