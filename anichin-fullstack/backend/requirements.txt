@@ -9,3 +9,4 @@ flask-pymongo
 pymongo
 dnspython
 gunicorn
+cloudscraper

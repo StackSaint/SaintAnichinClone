@@ -1,50 +1,48 @@
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from os import getenv
-from requests import Response
+from requests import Session, Response
 import logging
+import cloudscraper # Import the new library
 from typing import Optional, Dict, Any
-import cloudscraper # REQUIRED: pip install cloudscraper
 
 load_dotenv()
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
-
-class Parsing:
+class Parsing(Session):
     def __init__(self) -> None:
-        # We use composition instead of inheritance here to wrap the cloudscraper session
-        self.scraper = cloudscraper.create_scraper()
+        super().__init__()
         self.url: str = "https://anichin.club"
         self.history_url: Optional[str] = None
-        logger.info(f"Initialized Parsing session with URL: {self.url}")
+        
+        # Initialize the Cloudscraper session
+        # This acts like a browser (Chrome) to bypass Cloudflare
+        self.scraper = cloudscraper.create_scraper(
+            browser={
+                'browser': 'chrome',
+                'platform': 'windows',
+                'desktop': True
+            }
+        )
+        logger.info(f"Initialized Cloudscraper session with URL: {self.url}")
 
     def __get_html(self, slug: str, **kwargs: Any) -> Optional[str]:
-        """Get HTML content from the specified slug."""
+        """Get HTML content using Cloudscraper."""
         try:
             if slug.startswith("/"):
                 url = f"{self.url}{slug}"
             else:
                 url = f"{self.url}/{slug}"
 
-            # Cloudscraper handles the cookies automatically, so we removed the hardcoded string.
-            headers: Dict[str, str] = {
-                "User-Agent": getenv(
-                    "USER_AGENT",
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
-                ),
-            }
-
-            if kwargs.get("headers"):
-                headers.update(kwargs["headers"])
-            kwargs["headers"] = headers
+            # We don't need to manually set User-Agent or Cookies anymore.
+            # Cloudscraper handles that for us.
 
             logger.debug(f"Making request to: {url}")
             
             # Use self.scraper.get instead of self.get
             response: Response = self.scraper.get(url, **kwargs)
-            response.raise_for_status()  # Raise an exception for bad status codes
+            response.raise_for_status()
 
             self.history_url = url
             logger.debug(f"Successfully fetched content from: {url}")
