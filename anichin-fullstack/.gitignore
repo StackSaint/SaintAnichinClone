@@ -1,0 +1,17 @@
+# --- Dependencies ---
+node_modules/
+backend/venv/
+backend/__pycache__/
+backend/api/__pycache__/
+backend/api/utils/__pycache__/
+
+# --- Security (NEVER UPLOAD THESE) ---
+.env
+backend/.env
+
+# --- Database & Local Files ---
+backend/instance/
+backend/*.db
+backend/*.sqlite3
+dist/
+.DS_Store

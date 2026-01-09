@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+/* ... existing code ... */
+
+/* SWORD LOADING ANIMATION */
+@keyframes sword-slash {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)); /* Blue Glow */
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+  }
+}
+
+.animate-sword {
+  animation: sword-slash 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Optional: Text Pulse */
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.animate-pulse-text {
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+/* ... existing code ... */
+
+/* 1. SWORD GLOW & PULSE */
+@keyframes sword-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 1));
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+.animate-sword-pulse {
+  animation: sword-glow 2s ease-in-out infinite;
+}
+
+/* 2. REVERSE SPIN (For the outer ring) */
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 3s linear infinite;
+}
+
+/* 3. SLOW SPIN (For the inner ring) */
+.animate-spin-slow {
+  animation: spin 4s linear infinite;
+}
