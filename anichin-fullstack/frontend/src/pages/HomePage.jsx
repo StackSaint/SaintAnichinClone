@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import { AlertCircle } from 'lucide-react'; // Removed PlayCircle import
 import { PlayCircle, AlertCircle, Sword } from 'lucide-react'; // Add 'Sword'
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export default function HomePage() {
   const [data, setData] = useState(null);
