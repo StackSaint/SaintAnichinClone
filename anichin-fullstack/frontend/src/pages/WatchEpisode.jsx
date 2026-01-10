@@ -169,11 +169,11 @@ export default function WatchEpisode() {
                       <div className="relative">
                         <div className="absolute inset-0 w-16 h-16 border-4 border-blue-500/30 rounded-full animate-ping"></div>
                         <div className="absolute inset-0 w-16 h-16 border-4 border-t-blue-500 border-r-transparent border-b-blue-500 border-l-transparent rounded-full animate-spin"></div>
-                        <div className="relative z-10 p-3">
-                           <Sword className="w-8 h-8 text-blue-400 animate-sword" />
+                        <div className="relative z-15 p-4 flex items-center justify-center">
+                           <Sword className="w-7 h-7 text-blue-400 animate-sword " />
                         </div>
                       </div>
-                      <p className="text-blue-400 text-xs font-bold tracking-widest animate-pulse">LOADING STREAM...</p>
+                      <p className="text-blue-400 text-xs font-bold tracking-widest animate-pulse">LOADING STREAM ...</p>
                     </div>
                     // ---------------------------------------------
                 ) : currentServer ? (

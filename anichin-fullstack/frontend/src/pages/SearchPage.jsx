@@ -32,19 +32,28 @@ export default function SearchPage() {
 
       {loading ? (
         // --- NEW LOADING ANIMATION ---
-        <div className="flex flex-col justify-center items-center h-[50vh] space-y-6">
-          <div className="relative">
-            <div className="absolute inset-0 w-24 h-24 border-4 border-blue-500/30 rounded-full animate-ping"></div>
-            <div className="absolute inset-0 w-24 h-24 border-4 border-t-blue-500 border-r-transparent border-b-blue-500 border-l-transparent rounded-full animate-spin"></div>
-            <div className="relative z-10 bg-gray-900/80 p-4 rounded-full border border-blue-500/50">
-               <Sword className="w-12 h-12 text-blue-400 animate-sword" />
+        <div className="flex flex-col justify-center items-center h-[70vh] space-y-8">
+              {/* MAGIC CIRCLE CONTAINER */}
+              <div className="relative flex items-center justify-center w-32 h-32">
+                {/* Ring 1: Outer Circle (Spins Reverse) */}
+                <div className="absolute inset-0 w-full h-full border-[3px] border-blue-500/30 border-t-blue-400 border-l-blue-400 rounded-full animate-spin-reverse"></div>
+                {/* Ring 2: Inner Circle (Spins Normal & Slow) */}
+                <div className="absolute w-24 h-24 border-[3px] border-cyan-500/20 border-b-cyan-400 border-r-cyan-400 rounded-full animate-spin-slow"></div>
+                {/* Ring 3: Static Glow Background */}
+                <div className="absolute w-20 h-20 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+                {/* THE SWORD (Centered & Floating) */}
+                <div className="relative z-10 p-3">
+                   <Sword className="w-14 h-14 text-white drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] animate-sword-pulse" fill="currentColor" />
+                </div>
+              </div>
+              {/* Loading Text */}
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 tracking-[0.2em] uppercase animate-pulse">
+                  Searching 
+                </h3>
+                <p className="text-xs text-blue-500/60 font-mono">Searching in storage ring...</p>
+              </div>
             </div>
-          </div>
-          <div className="text-center animate-pulse-text">
-            <h3 className="text-xl font-bold text-blue-400 tracking-widest uppercase">Searching...</h3>
-            <p className="text-xs text-gray-500 mt-1">Scouring the archives</p>
-          </div>
-        </div>
         // -----------------------------
       ) : results.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -69,7 +78,7 @@ export default function SearchPage() {
       ) : (
         <div className="text-center mt-20 text-gray-400">
             <p className="text-xl">No results found.</p>
-            <p className="text-sm mt-2">Try searching for "One Piece" or "Naruto"</p>
+            <p className="text-sm mt-2">Try searching for "Renegade Immortal" or "Soul Land"</p>
         </div>
       )}
     </div>

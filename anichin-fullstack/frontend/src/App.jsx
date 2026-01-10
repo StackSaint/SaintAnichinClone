@@ -64,15 +64,15 @@ function Navbar({ token, logout }) {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="text-2xl font-black tracking-tighter hover:scale-105 transition flex-shrink-0">
-            <span className="text-blue-500">ANI</span>
-            <span className="text-white">CHIN</span>
+            <span className="text-blue-500">Stack</span>
+            <span className="text-white">Saint</span>
           </Link>
           
           {/* Search Bar - Now working! */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-lg mx-auto relative group">
             <input 
               type="text" 
-              placeholder="Search anime..." 
+              placeholder="Search anime ..." 
               className="w-full bg-gray-900 text-gray-200 px-5 py-2.5 rounded-full border border-gray-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition shadow-inner"
               value={query}
               onChange={(e) => setQuery(e.target.value)}

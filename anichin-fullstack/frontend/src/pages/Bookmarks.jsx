@@ -65,21 +65,30 @@ export default function Bookmarks() {
 
   // 2. Loading State (UPDATED)
   if (loading) return (
-    <div className="flex flex-col justify-center items-center h-[70vh] space-y-6">
-      <div className="relative">
-        <div className="absolute inset-0 w-24 h-24 border-4 border-blue-500/30 rounded-full animate-ping"></div>
-        <div className="absolute inset-0 w-24 h-24 border-4 border-t-blue-500 border-r-transparent border-b-blue-500 border-l-transparent rounded-full animate-spin"></div>
-        <div className="relative z-10 bg-gray-900/80 p-4 rounded-full border border-blue-500/50">
-           <Sword className="w-12 h-12 text-blue-400 animate-sword" />
+    <div className="flex flex-col justify-center items-center h-[70vh] space-y-8">
+          {/* MAGIC CIRCLE CONTAINER */}
+          <div className="relative flex items-center justify-center w-32 h-32">
+            {/* Ring 1: Outer Circle (Spins Reverse) */}
+            <div className="absolute inset-0 w-full h-full border-[3px] border-blue-500/30 border-t-blue-400 border-l-blue-400 rounded-full animate-spin-reverse"></div>
+            {/* Ring 2: Inner Circle (Spins Normal & Slow) */}
+            <div className="absolute w-24 h-24 border-[3px] border-cyan-500/20 border-b-cyan-400 border-r-cyan-400 rounded-full animate-spin-slow"></div>
+            {/* Ring 3: Static Glow Background */}
+            <div className="absolute w-20 h-20 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+            {/* THE SWORD (Centered & Floating) */}
+            <div className="relative z-10 p-3">
+               <Sword className="w-14 h-14 text-white drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] animate-sword-pulse" fill="currentColor" />
+            </div>
+          </div>
+          {/* Loading Text */}
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 tracking-[0.2em] uppercase animate-pulse">
+              Opening Scroll
+            </h3>
+            <p className="text-xs text-blue-500/60 font-mono">Retrieving your secret techniques...</p>
+          </div>
         </div>
-      </div>
-      <div className="text-center animate-pulse-text">
-        <h3 className="text-xl font-bold text-blue-400 tracking-widest uppercase">Opening Scroll...</h3>
-        <p className="text-xs text-gray-500 mt-1">Retrieving your secret techniques</p>
-      </div>
-    </div>
   );
-
+  
   // 3. Error State
   if (error) return <div className="text-center text-red-500 mt-20 font-bold">{error}</div>;
 
@@ -124,7 +133,7 @@ export default function Bookmarks() {
             <h3 className="text-xl font-bold text-white mb-2">Your list is empty</h3>
             <p className="text-sm">Go find some awesome anime to watch!</p>
             <Link to="/" className="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition font-bold">
-                Browse Anime
+                Browse Immortal Journey
             </Link>
         </div>
       )}
